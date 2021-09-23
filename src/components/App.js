@@ -17,6 +17,7 @@ const [isLoaded, setIsLoaded] = useState(false)
     .then(res => {
       console.log(res.data)
       setWeather(res.data)
+      setIsLoaded(true)
     })
     .catch(err => {
       console.log(err)
@@ -25,7 +26,6 @@ const [isLoaded, setIsLoaded] = useState(false)
 
   useEffect(() => {
     getWeather(33.691359, -118.322756, "alerts")
-    setIsLoaded(true)
   }, [])
 
 
@@ -33,8 +33,8 @@ const [isLoaded, setIsLoaded] = useState(false)
     <div className="App">
       <header className="App-header">
         {!isLoaded ? "Loading" : weather.Days.map((day) => {
-          return <Card weather={day} key={day.date}/>
-  })}
+          return (<Card weather={day} key={day.date}/>)
+        })}
       </header>
     </div>
   );
