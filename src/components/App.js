@@ -3,10 +3,12 @@ import './App.css';
 import Axios from 'axios'
 import Card from './Card.jsx'
 
-const API_KEY="71b79c785e848817c3c53cf4e8fb9f3a"
+// const API_KEY="71b79c785e848817c3c53cf4e8fb9f3a"
 const lat="33.691359"
 const lon="-118.322756"
-const URL=`http://api.weatherunlocked.com/api/forecast/${lat},${lon}?app_id=3fa93b11&app_key=${API_KEY}`
+// const URL=`http://api.weatherunlocked.com/api/forecast/${lat},${lon}?app_id=3fa93b11&app_key=${API_KEY}`
+const API_KEY=`27217e9604ac8afb647d64da44c724a2`
+const URL= `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,hourly,minutely,alerts&appid=${API_KEY}&units=imperial`
 
 function App() {
 const [weather, setWeather] = useState([])
@@ -32,8 +34,11 @@ const [isLoaded, setIsLoaded] = useState(false)
   return (
     <div className="App">
       <header className="App-header">
-        {!isLoaded ? "Loading" : weather.Days.map((day) => {
-          return (<Card weather={day} key={day.date}/>)
+        {/* {!isLoaded ? "Loading" : weather.Days.map((day) => {
+                    return (<Card weather={day} key={day.date}/>) */}
+
+        {!isLoaded ? "Loading" : weather.daily.map((day) => {
+          return (<Card weather={day} key={day.dt}/>)
         })}
       </header>
     </div>
