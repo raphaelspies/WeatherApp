@@ -11,7 +11,8 @@ export default function Card (props) {
   const tempMaxF = Math.floor(props.weather.temp.max);
   const tempMinF = Math.floor(props.weather.temp.min);
   const weatherIconCode = props.weather.weather[0].icon
-  const weatherIcon = <img src={`http://openweathermap.org/img/wn/${weatherIconCode}@2x.png`}/>
+  const weatherDesc = props.weather.weather[0].description
+  const weatherIcon = <img src={`http://openweathermap.org/img/wn/${weatherIconCode}@2x.png`} alt={`${weatherDesc}`}/>
 
   return (
     <div className="card">
