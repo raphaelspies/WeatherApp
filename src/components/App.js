@@ -2,11 +2,11 @@ import React, {useState, useEffect}  from 'react'
 import './styles.css';
 import Axios from 'axios'
 import Card from './Card.jsx'
-require('dotenv').config()
+import env from 'react-dotenv'
 
 const lat="33.691359"
 const lon="-118.322756"
-const API_KEY= process.env.API_KEY
+const API_KEY = env.APIKEY
 const URL= `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,hourly,minutely,alerts&appid=${API_KEY}&units=imperial`
 
 function App() {
@@ -26,6 +26,7 @@ const [isLoaded, setIsLoaded] = useState(false)
   }
 
   useEffect(() => {
+    console.log("api key: ", process.env.APIKEY)
     getWeather(33.691359, -118.322756, "alerts")
   }, [])
 
